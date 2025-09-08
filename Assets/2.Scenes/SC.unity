@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 14877516}
   - component: {fileID: 14877515}
   - component: {fileID: 14877518}
+  - component: {fileID: 14877519}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -256,6 +257,51 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &14877519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14877514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea6663269f1bea342a2300de702f51f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraPos: {fileID: 121999228}
+  moveSpeed: 1
+--- !u!1 &121999227
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 121999228}
+  m_Layer: 0
+  m_Name: CameraPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &121999228
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121999227}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.0600002, y: -0.3699665, z: -10}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1378107981}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1113461957
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,7 +530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 3
   Hp: 30
-  attackSpeed: 5
+  attackSpeed: 2
   enemy: {fileID: 1113461957}
 --- !u!212 &1378107980
 SpriteRenderer:
@@ -553,7 +599,8 @@ Transform:
   m_LocalPosition: {x: -1.46, y: 2.06, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 121999228}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1378107982
@@ -568,7 +615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be4ee5517c94e534f94ec0e522fb4f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackRange: 4
+  AttackRange: 3
 --- !u!95 &1378107983
 Animator:
   serializedVersion: 7
@@ -603,7 +650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a0c2284305a814e8adab9a9a5ac001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 4
+  attackRange: 3
 --- !u!114 &1378107985
 MonoBehaviour:
   m_ObjectHideFlags: 0
