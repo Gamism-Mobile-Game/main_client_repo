@@ -8,6 +8,7 @@ public class PlayerMove : MonoBehaviour,IState
     public void Init()
     {
        rigid = GetComponent<Rigidbody2D>();
+        attackState = GetComponent<PlayerAttack>();
     }
 
     public void EnterState()
@@ -27,12 +28,13 @@ public class PlayerMove : MonoBehaviour,IState
 
     public IState CheckTransition()
     {
-        Collider2D col = Physics2D.OverlapBox(transform.position + new Vector3(attackRange / 2, 0), new Vector3(attackRange, attackRange), 0);
-
-        if (col != null)
-            return attackState;
-        else
-            return null;
+        Collider2D[] cols = Physics2D.OverlapBoxAll(transform.position + new Vector3(attackRange / 2, 0), new Vector3(attackRange, attackRange), 0);
+        foreach (Collider2D col in cols)
+        {
+            if (col.TryGetComponent<EnemyStat>(out _))
+                return attackState;
+        }
+        return null;
     }
 
     public void OnDrawGizmos()
