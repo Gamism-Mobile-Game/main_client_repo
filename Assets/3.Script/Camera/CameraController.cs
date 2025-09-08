@@ -13,15 +13,10 @@ public class CameraController : MonoBehaviour
     public void Init()
     {
         transform.position = cameraPos.position;
-        StartCoroutine(FollowPlayer());
     }
 
-    private IEnumerator FollowPlayer()
+    private void FixedUpdate()
     {
-        while (true) 
-        {
-            yield return null;
-            transform.position = Vector3.Slerp(transform.position,cameraPos.position,Time.deltaTime * moveSpeed);
-        }
+        transform.position = Vector3.Slerp(transform.position, cameraPos.position, Time.deltaTime * moveSpeed);
     }
 }
