@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour,IState
 {
+    public float moveSpeed;
     public float attackRange;
     private Rigidbody2D rigid;
     private IState attackState;
@@ -13,7 +14,7 @@ public class PlayerMove : MonoBehaviour,IState
 
     public void EnterState()
     {
-        rigid.linearVelocityX = 1;
+       
     }
 
     public void ExitState()
@@ -23,7 +24,7 @@ public class PlayerMove : MonoBehaviour,IState
 
     public void OnUpdate()
     {
-
+        rigid.linearVelocityX = moveSpeed;
     }
 
     public IState CheckTransition()
