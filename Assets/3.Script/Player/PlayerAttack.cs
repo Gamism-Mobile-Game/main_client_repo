@@ -16,6 +16,7 @@ public class PlayerAttack : MonoBehaviour,IState
         damage = stat.Damage;
         attackSpeed = stat.AttackSpeed;
         attackRange = stat.AttackRange;
+        moveState = GetComponent<PlayerMove>();
     }
 
     private void Attack()
@@ -51,7 +52,7 @@ public class PlayerAttack : MonoBehaviour,IState
         Collider2D[] cols = Physics2D.OverlapBoxAll(transform.position + new Vector3(attackRange/2, 0), new Vector3(attackRange, attackRange), 0);
         foreach (Collider2D col in cols)
         {
-            if(col.TryGetComponent<EnemyStat>(out var enemy))
+            if (col.TryGetComponent<EnemyStat>(out var enemy))
                 return enemy.GetComponent<IGetDamage>();
         }
         return null;
@@ -64,6 +65,9 @@ public class PlayerAttack : MonoBehaviour,IState
 
     public IState CheckTransition()
     {
-       return moveState;
+        if (GetTarget() == null)
+            return moveState;
+        else
+            return null;
     }
 }

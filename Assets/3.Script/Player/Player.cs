@@ -38,7 +38,13 @@ public class Player : MonoBehaviour
     {
         while (true)
         {
-            state.CheckTransition();
+            IState getState = state.CheckTransition();
+            if(getState != null)  //state°¡ ¹Ù²î¸é true  ¾È¹Ù²î¸é false
+            {
+                state.ExitState();
+                state = getState;
+                state.EnterState();
+            }
             state.OnUpdate();
             yield return null;
         }

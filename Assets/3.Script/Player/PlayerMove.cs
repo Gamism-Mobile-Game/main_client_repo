@@ -2,17 +2,19 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour,IState
 {
+    public float moveSpeed;
     public float attackRange;
     private Rigidbody2D rigid;
     private IState attackState;
     public void Init()
     {
        rigid = GetComponent<Rigidbody2D>();
+        attackState = GetComponent<PlayerAttack>();
     }
 
     public void EnterState()
     {
-        rigid.linearVelocityX = 1;
+       
     }
 
     public void ExitState()
@@ -22,17 +24,18 @@ public class PlayerMove : MonoBehaviour,IState
 
     public void OnUpdate()
     {
-
+        rigid.linearVelocityX = moveSpeed;
     }
 
     public IState CheckTransition()
     {
-        Collider2D col = Physics2D.OverlapBox(transform.position + new Vector3(attackRange / 2, 0), new Vector3(attackRange, attackRange), 0);
-
-        if (col != null)
-            return attackState;
-        else
-            return null;
+        Collider2D[] cols = Physics2D.OverlapBoxAll(transform.position + new Vector3(attackRange / 2, 0), new Vector3(attackRange, attackRange), 0);
+        foreach (Collider2D col in cols)
+        {
+            if (col.TryGetComponent<EnemyStat>(out _))
+                return attackState;
+        }
+        return null;
     }
 
     public void OnDrawGizmos()
