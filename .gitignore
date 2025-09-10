@@ -522,8 +522,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-*.dll
-
 ### VisualStudio ###
 
 # User-specific files
