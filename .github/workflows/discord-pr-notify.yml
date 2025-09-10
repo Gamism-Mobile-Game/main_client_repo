@@ -14,4 +14,4 @@ jobs:
           curl -H "Content-Type: application/json" \
           -X POST \
           -d "{\"content\": \"<@&1412660261848092672> 새로운 PR이 생성/업데이트되었습니다!\\n제목: ${{ github.event.pull_request.title }}\\n링크: ${{ github.event.pull_request.html_url }}\", \"allowed_mentions\": {\"roles\": [\"1412660261848092672\"]}}" \
-          ${{https://discord.com/api/webhooks/1412981788493746207/OVoUoZHYwo-S0683yWbxx1Pg9Qa8EmbAql53R2mHTBBpPwfjtYCBZD_X4O4RhDENYBUf/github}}
+          ${{https://discord.com/api/webhooks/1412981788493746207/OVoUoZHYwo-S0683yWbxx1Pg9Qa8EmbAql53R2mHTBBpPwfjtYCBZD_X4O4RhDENYBUf}}
