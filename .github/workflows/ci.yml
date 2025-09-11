@@ -1,0 +1,39 @@
+name: CI Discord Notification
+
+on:
+  push:
+    branches: ["*"] # 모든 브랜치 push 시
+  pull_request:
+    branches: ["*"] # 모든 브랜치의 PR 이벤트 시
+
+jobs:
+  notify-discord:
+    runs-on: ubuntu-latest
+    steps:
+      # CI 성공 알림
+      - name: Success Discord Notification
+        uses: sarisia/actions-status-discord@v1
+        if: ${{ success() }}
+        with:
+          title: "CI Successful!!"
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          status: ${{ job.status }}
+          description: "CI success"
+          content: "<@${{ secrets.DISCORD_ID }}>  확인해라 XX" # 성공 시 멘션
+          color: 4CAF50
+          username: 대도동알리미
+          url: https://github.com/Team-Gamism/dimension_mayhem_client
+
+      # CI 실패 알림
+      - name: Failed Discord Notification
+        uses: sarisia/actions-status-discord@v1
+        if: ${{ failure() }}
+        with:
+          title: "CI Failure"
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          status: ${{ job.status }}
+          description: "CI Failure"
+          content: "<@${{ secrets.DISCORD_ID }}> 실패했어..." # 실패 시 멘션
+          color: e74c3c
+          username: CI Bot
+          url: https://github.com/Team-Gamism/dimension_mayhem_client
