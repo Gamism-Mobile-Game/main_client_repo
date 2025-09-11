@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
         GetComponent<PlayerAttack>().Init(stat);
         PlayerMove playerMove = GetComponent<PlayerMove>();
         playerMove.Init();
-        state = playerMove.GetComponent<IState>();
+        state = playerMove;
         StartCoroutine(OnUpdate());
     }
 
