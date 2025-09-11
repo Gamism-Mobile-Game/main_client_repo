@@ -1,8 +1,6 @@
 name: CI Discord Notification
 
 on:
-  push:
-    branches: ["*"] # 모든 브랜치 push 시
   pull_request:
     branches: ["*"] # 모든 브랜치의 PR 이벤트 시
 
@@ -15,13 +13,14 @@ jobs:
         uses: sarisia/actions-status-discord@v1
         if: ${{ success() }}
         with:
-          title: "CI Successful!!"
+          title: "PR이 올라왔어요!!"
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           status: ${{ job.status }}
-          description: "CI success"
-          content: "<@${{ secrets.DISCORD_ID }}>  확인해라 XX" # 성공 시 멘션
+          description: "Open PullRequest"
+          content: "<@${{ secrets.DISCORD_ID1 }}> <@${{ secrets.DISCORD_ID2 }}> <@${{ secrets.DISCORD_ID3 }}> PR올렸읍니다. 확인해라 XX"
           color: 4CAF50
-          username: 대도동알리미
+          username: 대도동 알리미
+          avatar_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIqdmXuyB1Y-m4q4Udxg-df4TF5f7gV4O-gg&s"
           url: https://github.com/Team-Gamism/dimension_mayhem_client
 
       # CI 실패 알림
@@ -33,7 +32,8 @@ jobs:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           status: ${{ job.status }}
           description: "CI Failure"
-          content: "<@${{ secrets.DISCORD_ID }}> 실패했어..." # 실패 시 멘션
+          content: "<@${{ secrets.DISCORD_ID1 }}> <@${{ secrets.DISCORD_ID2 }}> <@${{ secrets.DISCORD_ID3 }}> 실패했어..." # 실패 시 멘션
           color: e74c3c
-          username: CI Bot
+          username: 대도동 알리미
+          avatar_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIqdmXuyB1Y-m4q4Udxg-df4TF5f7gV4O-gg&s"
           url: https://github.com/Team-Gamism/dimension_mayhem_client
