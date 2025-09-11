@@ -13,15 +13,16 @@ public class PlayerStat : Stat,IGetDamage
     }
 
     public int MaxHp { get; set; }
+    public float AttackRange;
 
     private int hp;
 
     protected Action getDamageAction;
 
 
-    public void Init(int damage, float attackSpeed,float attackRange, int maxHp)
+    public void Init(int damage, float attackSpeed, int maxHp)
     {
-        base.Init(damage, attackSpeed,attackRange);
+        base.Init(damage, attackSpeed);
         MaxHp = maxHp;
         Hp = maxHp;
     }
