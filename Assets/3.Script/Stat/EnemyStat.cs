@@ -23,9 +23,9 @@ public class EnemyStat : Stat,IGetDamage
 
     
 
-    public void Init(int damage, float attackSpeed, int maxHp,float speed)
+    public void Init(int damage, float attackSpeed,float attackRange, int maxHp,float speed)
     {
-        base.Init(damage, attackSpeed);
+        base.Init(damage, attackSpeed,attackRange);
         MaxHp = maxHp;
         Hp = maxHp;
         Speed = speed;
